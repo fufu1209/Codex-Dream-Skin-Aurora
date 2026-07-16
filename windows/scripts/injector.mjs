@@ -4,9 +4,10 @@ import { fileURLToPath } from "node:url";
 
 const here = path.dirname(fileURLToPath(import.meta.url));
 const root = path.resolve(here, "..");
-const SKIN_VERSION = "1.0.0";
+const SKIN_VERSION = "1.1.2";
 const LOOPBACK_HOSTS = new Set(["127.0.0.1", "localhost", "[::1]", "::1"]);
 const BROWSER_ID_PATTERN = /^[A-Za-z0-9._-]{1,200}$/;
+const MAX_ART_BYTES = 16 * 1024 * 1024;
 
 class CdpIdentityMismatchError extends Error {}
 
@@ -18,6 +19,7 @@ function parseArgs(argv) {
     screenshot: null,
     reload: false,
     browserId: null,
+    themeDir: null,
   };
   for (let i = 0; i < argv.length; i += 1) {
     const arg = argv[i];
@@ -28,6 +30,7 @@ function parseArgs(argv) {
     else if (arg === "--remove") options.mode = "remove";
     else if (arg === "--timeout-ms") options.timeoutMs = Number(argv[++i]);
     else if (arg === "--browser-id") options.browserId = argv[++i];
+    else if (arg === "--theme-dir") options.themeDir = path.resolve(argv[++i]);
     else if (arg === "--screenshot") options.screenshot = path.resolve(argv[++i]);
     else if (arg === "--reload") options.reload = true;
     else if (arg === "--self-test") options.mode = "self-test";
@@ -266,16 +269,65 @@ async function connectBrowserIdentityAnchor(port, expectedBrowserId) {
   return new BrowserIdentityAnchor(validatedDebuggerUrl(version, port)).open();
 }
 
-async function loadPayload() {
-  const [css, template, art] = await Promise.all([
+async function loadTheme(themeDir) {
+  const assetsRoot = themeDir ?? path.join(root, "assets");
+  const configPath = path.join(assetsRoot, "theme.json");
+  let raw;
+  try {
+    raw = JSON.parse(await fs.readFile(configPath, "utf8"));
+  } catch (error) {
+    if (themeDir && error.code === "ENOENT") {
+      throw new Error(`Explicit theme directory is missing theme.json: ${configPath}`);
+    }
+    throw error;
+  }
+  if (raw.schemaVersion !== 1 || typeof raw.image !== "string" || path.basename(raw.image) !== raw.image) {
+    throw new Error(`${configPath} has an unsupported schema or image field`);
+  }
+  const text = (value, fallback, max) => typeof value === "string" && value.trim()
+    ? value.trim().slice(0, max) : fallback;
+  const color = (value, fallback) => typeof value === "string" &&
+    (/^#[0-9a-f]{6}$/i.test(value.trim()) || /^rgba?\([0-9., %]+\)$/i.test(value.trim()))
+    ? value.trim() : fallback;
+  const theme = {
+    schemaVersion: 1,
+    id: text(raw.id, "custom", 80),
+    name: text(raw.name, "Codex Dream Skin", 80),
+    brandSubtitle: text(raw.brandSubtitle, "CODEX DREAM SKIN", 80),
+    statusText: text(raw.statusText, "DREAM SKIN ONLINE", 80),
+    quote: text(raw.quote, "MAKE SOMETHING WONDERFUL", 80),
+    image: raw.image,
+    colors: {
+      ink: color(raw.colors?.ink, "#4c2364"),
+      purple: color(raw.colors?.purple, "#8b3dce"),
+      violet: color(raw.colors?.violet, "#b45cff"),
+      pink: color(raw.colors?.pink, "#ff73bd"),
+      blush: color(raw.colors?.blush, "#fff3f9"),
+      pearl: color(raw.colors?.pearl, "rgba(255, 251, 253, .92)"),
+      line: color(raw.colors?.line, "rgba(221, 122, 184, .42)"),
+    },
+  };
+  const imagePath = path.join(assetsRoot, theme.image);
+  const imageStat = await fs.stat(imagePath);
+  if (!imageStat.isFile() || imageStat.size < 1 || imageStat.size > MAX_ART_BYTES) {
+    throw new Error(`Theme image must be a non-empty file no larger than ${MAX_ART_BYTES} bytes`);
+  }
+  return { imagePath, imageStat, theme };
+}
+
+async function loadPayload(themeDir) {
+  const [css, template, loaded] = await Promise.all([
     fs.readFile(path.join(root, "assets", "dream-skin.css"), "utf8"),
     fs.readFile(path.join(root, "assets", "renderer-inject.js"), "utf8"),
-    fs.readFile(path.join(root, "assets", "dream-reference.png")),
+    loadTheme(themeDir),
   ]);
+  const art = await fs.readFile(loaded.imagePath);
   const artDataUrl = `data:image/png;base64,${art.toString("base64")}`;
   return template
     .replace("__DREAM_CSS_JSON__", JSON.stringify(css))
-    .replace("__DREAM_ART_JSON__", JSON.stringify(artDataUrl));
+    .replace("__DREAM_ART_JSON__", JSON.stringify(artDataUrl))
+    .replace("__DREAM_THEME_JSON__", JSON.stringify(loaded.theme))
+    .replace("__DREAM_VERSION_JSON__", JSON.stringify(SKIN_VERSION));
 }
 
 async function probeSession(session) {
@@ -437,7 +489,7 @@ async function capture(session, outputPath) {
 
 async function runOneShot(options) {
   const connected = await connectCodexTargets(options.port, options.timeoutMs);
-  const payload = (options.mode === "once" || options.reload) ? await loadPayload() : null;
+  const payload = (options.mode === "once" || options.reload) ? await loadPayload(options.themeDir) : null;
   const results = [];
   let screenshotCaptured = false;
   try {
@@ -499,7 +551,7 @@ async function runWatch(options) {
   process.on("SIGTERM", stop);
 
   try {
-    const payload = await loadPayload();
+    const payload = await loadPayload(options.themeDir);
     while (!stopping) {
       if (identityAnchor.closed) {
         console.error("[dream-skin] original CDP browser identity closed; watcher is stopping instead of reconnecting");
@@ -622,8 +674,9 @@ if (options.mode === "self-test") {
   }
   console.log(JSON.stringify({ pass: true, version: SKIN_VERSION, test: "loopback-cdp-validation" }));
 } else if (options.mode === "check-payload") {
-  const payload = await loadPayload();
-  if (payload.includes("__DREAM_CSS_JSON__") || payload.includes("__DREAM_ART_JSON__")) {
+  const payload = await loadPayload(options.themeDir);
+  if (payload.includes("__DREAM_CSS_JSON__") || payload.includes("__DREAM_ART_JSON__") ||
+      payload.includes("__DREAM_THEME_JSON__") || payload.includes("__DREAM_VERSION_JSON__")) {
     throw new Error("Payload placeholders were not fully replaced");
   }
   console.log(JSON.stringify({ pass: true, version: SKIN_VERSION, payloadBytes: Buffer.byteLength(payload) }));

@@ -458,3 +458,103 @@ html.codex-dream-skin [data-message-author-role] {
 @media (prefers-reduced-motion: reduce) {
   .dream-sparkles i { animation: none !important; }
 }
+
+/* Aurora Atelier visual refresh: shared with the macOS theme language. */
+:root.codex-dream-skin {
+  --aurora-ink: #281b38;
+  --aurora-surface: rgba(255, 250, 253, .84);
+  --aurora-line: rgba(129, 95, 182, .22);
+  --aurora-cyan: #79cfe0;
+  --aurora-coral: #ed7e91;
+  --aurora-lilac: #a98be7;
+  --aurora-text: #30233f;
+  --aurora-muted: #756a82;
+  --aurora-shadow: 0 24px 64px rgba(89, 44, 110, .16);
+}
+
+html.codex-dream-skin body {
+  background:
+    radial-gradient(ellipse at 12% 0%, rgba(121,207,224,.28), transparent 32%),
+    radial-gradient(ellipse at 90% 8%, rgba(169,139,231,.30), transparent 32%),
+    linear-gradient(135deg, #fffafe 0%, #f7effb 48%, #f0efff 100%) !important;
+  color: var(--aurora-text) !important;
+}
+
+html.codex-dream-skin body::before { opacity: .18 !important; background-size: 83px 83px, 127px 127px !important; }
+
+html.codex-dream-skin aside.app-shell-left-panel {
+  background: linear-gradient(180deg, rgba(255,252,254,.92), rgba(246,239,252,.90)) !important;
+  border: 1px solid var(--aurora-line) !important;
+  border-radius: 0 24px 24px 0 !important;
+  box-shadow: 18px 0 54px rgba(89,44,110,.10), inset -1px 0 rgba(255,255,255,.9) !important;
+  backdrop-filter: blur(22px) saturate(125%) !important;
+}
+
+html.codex-dream-skin aside.app-shell-left-panel button { color: var(--aurora-muted) !important; border-radius: 12px !important; }
+html.codex-dream-skin aside.app-shell-left-panel button:hover {
+  color: var(--aurora-text) !important;
+  background: linear-gradient(90deg, rgba(121,207,224,.18), rgba(169,139,231,.16)) !important;
+  transform: translateX(3px);
+}
+html.codex-dream-skin aside.app-shell-left-panel [aria-current="page"],
+html.codex-dream-skin aside.app-shell-left-panel [class~="bg-token-list-hover-background"] {
+  background: linear-gradient(90deg, rgba(121,207,224,.22), rgba(169,139,231,.18)) !important;
+  border: 1px solid rgba(121,207,224,.28) !important;
+  box-shadow: inset 3px 0 var(--aurora-cyan), 0 10px 26px rgba(89,44,110,.10) !important;
+}
+
+html.codex-dream-skin main.main-surface {
+  background: linear-gradient(145deg, rgba(255,252,254,.78), rgba(247,241,252,.78)) !important;
+  border: 1px solid var(--aurora-line) !important;
+  border-radius: 24px 0 0 0 !important;
+  box-shadow: inset 0 1px rgba(255,255,255,.9), -18px 0 60px rgba(89,44,110,.08) !important;
+  backdrop-filter: blur(18px) saturate(120%) !important;
+}
+
+html.codex-dream-skin main.main-surface > header.app-header-tint {
+  background: linear-gradient(90deg, rgba(255,252,254,.86), rgba(239,231,255,.74)) !important;
+  border-bottom: 1px solid var(--aurora-line) !important;
+  backdrop-filter: blur(20px) !important;
+}
+
+html.codex-dream-skin .dream-home > div:first-child > div:first-child > div:first-child {
+  height: 278px !important;
+  min-height: 278px !important;
+  border: 1px solid rgba(121,207,224,.58) !important;
+  border-radius: 28px !important;
+  background-image: linear-gradient(100deg, rgba(49,28,75,.92) 0%, rgba(49,28,75,.58) 44%, rgba(49,28,75,.06) 100%), var(--dream-art) !important;
+  background-size: 100% 100%, cover !important;
+  background-position: center, 72% center !important;
+  box-shadow: var(--aurora-shadow), inset 0 1px rgba(255,255,255,.18) !important;
+}
+
+html.codex-dream-skin .dream-home > div:first-child > div:first-child > div:first-child::after {
+  content: ""; position: absolute; inset: 16px; border: 1px solid rgba(255,255,255,.22); border-radius: 20px; pointer-events: none;
+}
+html.codex-dream-skin .dream-home [data-feature="game-source"] { font-size: clamp(22px,2.3vw,34px) !important; letter-spacing: -.025em !important; text-shadow: 0 8px 24px rgba(38,15,56,.42) !important; }
+html.codex-dream-skin .dream-home [data-feature="game-source"]::after { color: rgba(255,248,255,.78) !important; font-size: 13px !important; }
+
+html.codex-dream-skin .dream-home .group\/home-suggestions button {
+  min-height: 142px !important;
+  border: 1px solid var(--aurora-line) !important;
+  border-radius: 18px !important;
+  background: linear-gradient(145deg, rgba(255,255,255,.88), rgba(247,238,255,.82)) !important;
+  color: var(--aurora-text) !important;
+  box-shadow: 0 14px 34px rgba(89,44,110,.12), inset 0 1px rgba(255,255,255,.94) !important;
+}
+html.codex-dream-skin .dream-home .group\/home-suggestions button:hover { transform: translateY(-6px) !important; border-color: rgba(121,207,224,.56) !important; box-shadow: 0 20px 42px rgba(89,44,110,.18) !important; }
+html.codex-dream-skin .dream-home .group\/home-suggestions button > span:first-child > span:first-child { background: linear-gradient(145deg, var(--aurora-cyan), var(--aurora-lilac)) !important; box-shadow: 0 0 0 8px rgba(121,207,224,.10), 0 8px 18px rgba(89,44,110,.18) !important; }
+
+html.codex-dream-skin .composer-surface-chrome {
+  border: 1px solid rgba(121,207,224,.38) !important;
+  border-radius: 20px !important;
+  background: linear-gradient(145deg, rgba(255,255,255,.88), rgba(245,238,255,.82)) !important;
+  box-shadow: 0 18px 42px rgba(89,44,110,.14), inset 0 1px rgba(255,255,255,.95) !important;
+  backdrop-filter: blur(22px) saturate(125%) !important;
+}
+html.codex-dream-skin .composer-surface-chrome::before { content: "✦" !important; color: white !important; background: linear-gradient(145deg, var(--aurora-cyan), var(--aurora-coral)) !important; box-shadow: 0 0 20px rgba(121,207,224,.32) !important; }
+html.codex-dream-skin .ProseMirror { color: var(--aurora-text) !important; caret-color: var(--aurora-cyan) !important; }
+html.codex-dream-skin button[class~="bg-token-foreground"] { background: linear-gradient(135deg, var(--aurora-cyan), var(--aurora-lilac)) !important; color: white !important; box-shadow: 0 8px 20px rgba(121,207,224,.24) !important; }
+html.codex-dream-skin article, html.codex-dream-skin [data-message-author-role] { border: 1px solid rgba(129,95,182,.12) !important; border-radius: 16px !important; background: rgba(255,255,255,.42) !important; box-shadow: 0 12px 30px rgba(89,44,110,.08) !important; }
+
+@media (max-width: 900px) { html.codex-dream-skin .dream-home > div:first-child > div:first-child > div:first-child { height: 226px !important; min-height: 226px !important; } html.codex-dream-skin .dream-home [data-feature="game-source"] { font-size: 20px !important; } }

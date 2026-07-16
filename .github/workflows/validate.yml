@@ -1,0 +1,30 @@
+name: Validate
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  static:
+    name: Static checks
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Check shell syntax
+        shell: bash
+        run: |
+          set -euo pipefail
+          find macos -type f \( -name '*.sh' -o -name '*.command' \) -print0 | xargs -0 -n1 bash -n
+      - name: Check JavaScript syntax and payload
+        shell: bash
+        run: |
+          set -euo pipefail
+          find macos/scripts macos/assets windows/scripts windows/assets -type f \( -name '*.mjs' -o -name '*.js' \) -print0 | xargs -0 -n1 node --check
+          node macos/scripts/injector.mjs --check-payload >/dev/null
+          node windows/scripts/injector.mjs --self-test >/dev/null

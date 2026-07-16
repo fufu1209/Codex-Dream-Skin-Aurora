@@ -1,0 +1,18 @@
+{
+  "schemaVersion": 1,
+  "id": "aurora-atelier",
+  "name": "Aurora Atelier",
+  "brandSubtitle": "CODEX CREATIVE WORKSPACE",
+  "statusText": "AURORA ONLINE",
+  "quote": "Ideas deserve a beautiful place",
+  "image": "dream-reference.png",
+  "colors": {
+    "ink": "#281b38",
+    "purple": "#6c5ce7",
+    "violet": "#a98be7",
+    "pink": "#ed7e91",
+    "blush": "#f8f1ff",
+    "pearl": "rgba(255, 252, 255, .90)",
+    "line": "rgba(129, 95, 182, .22)"
+  }
+}

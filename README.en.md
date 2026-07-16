@@ -1,4 +1,9 @@
-# Codex Dream Skin
+# Codex Dream Skin — macOS / Windows Codex Desktop Themes
+
+[![Validate](https://github.com/Fei-Away/Codex-Dream-Skin/actions/workflows/validate.yml/badge.svg)](https://github.com/Fei-Away/Codex-Dream-Skin/actions/workflows/validate.yml)
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](./LICENSE)
+
+An open-source Codex Desktop theme and skin tool for macOS and Windows. It injects an interactive theme through loopback CDP without modifying the official `.app`, `app.asar`, WindowsApps package, or code signature. Customize artwork, `theme.json`, homepage hero, sidebar, suggestion cards, composer, and light/dark presentation.
 
 <p align="center">
   <a href="./README.md">中文</a> · <strong>English</strong>
@@ -90,8 +95,13 @@ One image, one mood. Real theme previews you can ship:
 
 - **Real UI** — Sidebar, cards, project picker, and input stay native. Not a fake full-window screenshot.
 - **Swappable art** — Drop in an image you like and it becomes your theme.
+- **Extensible themes** — macOS and Windows share a `theme.json` schema for names, branding, colors, and background art.
 - **Restorable** — One-click restore to the stock look.
 - **Safer path** — Local-loopback CDP inject only. No official binary or signature changes.
+
+## Search keywords
+
+Codex Desktop theme, Codex skin, Codex custom theme, Codex UI customization, macOS Codex theme, Windows Codex theme, Codex CDP injector, Codex customization, Aurora Atelier.
 
 ## Quick start
 
@@ -108,11 +118,14 @@ More detail:
 - Windows: [`windows/SKILL.md`](./windows/SKILL.md)
 - Paths: [`docs/platforms.md`](./docs/platforms.md)
 - Project notes: [`docs/PROJECT.md`](./docs/PROJECT.md)
+- Theme protocol: [`docs/platforms.md`](./docs/platforms.md#主题配置)
 
 ## Feedback & contributions
 
 - **Issues:** Use the [issue templates](./.github/ISSUE_TEMPLATE/) (bug / feature). Blank issues are disabled. Please try Verify / Restore self-checks before filing bugs.
 - **PRs:** Follow the [PR template](./.github/pull_request_template.md) — describe the change and tick the self-checks you actually ran (e.g. `macos/tests/run-tests.sh`, verify / restore).
+- **Local development:** Run `cd macos && npm test` on macOS; for static-only checks, use the Node.js and shell checks mirrored by GitHub Actions. On Windows, run `powershell -File windows/tests/run-tests.ps1`.
+- **Before publishing:** Keep the root [`LICENSE`](./LICENSE), `NOTICE`, bilingual READMEs, platform notes, and changelogs in sync. Never commit `auth.json`, API keys, customer screenshots, or local runtime state.
 
 ## Safety
 

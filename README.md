@@ -1,4 +1,9 @@
-# Codex Dream Skin
+# Codex Dream Skin：macOS / Windows Codex Desktop 换肤工具
+
+[![Validate](https://github.com/Fei-Away/Codex-Dream-Skin/actions/workflows/validate.yml/badge.svg)](https://github.com/Fei-Away/Codex-Dream-Skin/actions/workflows/validate.yml)
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](./LICENSE)
+
+面向 Codex Desktop 的开源主题与换肤工具，支持 macOS 和 Windows，通过本机回环 CDP 注入可交互主题，不修改官方 `.app`、`app.asar`、WindowsApps 或代码签名。支持自定义背景图、`theme.json` 主题配置、首页 Hero、侧栏、建议卡片、编辑器与深浅色外观。
 
 <p align="center">
   <strong>中文</strong> · <a href="./README.en.md">English</a>
@@ -6,7 +11,7 @@
 
 <p align="center">
   <strong>给 Codex 桌面端换一张会呼吸的脸。</strong><br>
-  外部主题 / 换肤工具 · 本机 CDP 注入 · 不改官方安装包
+  Codex Desktop 外部主题 / 换肤工具 · macOS / Windows · 本机 CDP 注入
 </p>
 
 <p align="center">
@@ -89,8 +94,13 @@
 
 - **真·可交互**：侧栏、建议卡、项目选择、输入框都是原生控件，不是整窗假截图贴上去
 - **可换图**：换一张喜欢的图，就能变成你的主题
+- **主题可扩展**：macOS / Windows 共享 `theme.json` schema，可自定义名称、品牌文案、配色和背景图
 - **可恢复**：一键还原官方外观
 - **相对安全**：本机回环 CDP 注入，不改官方二进制与签名
+
+## 适合搜索的项目关键词
+
+Codex Desktop theme、Codex skin、Codex custom theme、Codex UI customization、macOS Codex theme、Windows Codex theme、Codex CDP injector、Codex 换肤、Codex 主题、Codex 桌面端美化、Aurora Atelier。
 
 ## 快速开始
 
@@ -105,6 +115,7 @@
 
 - Mac：[`macos/README.md`](./macos/README.md)
 - Windows：[`windows/SKILL.md`](./windows/SKILL.md)
+- 主题协议：[`docs/platforms.md`](./docs/platforms.md#主题配置)
 - 路径对照：[`docs/platforms.md`](./docs/platforms.md)
 - 项目记录：[`docs/PROJECT.md`](./docs/PROJECT.md)
 
@@ -112,6 +123,8 @@
 
 - **Issue：** 请用 [Issue 模板](./.github/ISSUE_TEMPLATE/)（Bug / 功能）；已关闭空白 Issue。提交前建议先跑 Verify / Restore 自检。
 - **PR：** 请按 [PR 模板](./.github/pull_request_template.md) 写清改动，并勾选对应自测（如 `macos/tests/run-tests.sh`、verify / restore）。
+- **本地开发：** macOS 运行 `cd macos && npm test`；只做静态检查时可直接执行仓库的 GitHub Actions 同款 Node.js / shell 检查。Windows 运行 `powershell -File windows/tests/run-tests.ps1`。
+- **发布前：** 请确认仓库根目录的 [`LICENSE`](./LICENSE)、`NOTICE`、双语 README、平台说明和 changelog 已同步；不要提交 `auth.json`、API Key、客户截图或本机运行状态。
 
 ## 安全边界
 
