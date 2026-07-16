@@ -5,6 +5,8 @@
 
 An open-source Codex Desktop theme and skin tool for macOS and Windows. It injects an interactive theme through loopback CDP without modifying the official `.app`, `app.asar`, WindowsApps package, or code signature. Customize artwork, `theme.json`, homepage hero, sidebar, suggestion cards, composer, and light/dark presentation.
 
+Project: [github.com/fufu1209/Codex-Dream-Skin-Aurora](https://github.com/fufu1209/Codex-Dream-Skin-Aurora) · Sponsor: [fufuapi.xiefucai1209.com](https://fufuapi.xiefucai1209.com)
+
 <p align="center">
   <a href="./README.md">中文</a> · <strong>English</strong>
 </p>
@@ -22,23 +24,22 @@ An open-source Codex Desktop theme and skin tool for macOS and Windows. It injec
   Unofficial. Does not modify <code>.app</code> / <code>app.asar</code> / WindowsApps.
 </p>
 
-## Sponsors
+## Sponsor
 
 <p align="center">
-  <a href="https://passion8.cc/register?aff=TuPe">
-    <img src="docs/images/sponsor-passion8.png" alt="Passion8" height="72">
+  <a href="https://fufuapi.xiefucai1209.com">
+    <strong>Fufu API · AI Creative Infrastructure</strong>
   </a>
 </p>
 
 <p align="center">
-  <strong>Smarter Connections · Passionate Creation</strong><br>
-  <sub>Connect AI · Power Creation</sub>
+  <strong>Stable model access · More room to create</strong><br>
+  <sub>Fufu API · Connect AI · Power Creation</sub>
 </p>
 
 <p align="center">
-  Thanks to <a href="https://passion8.cc/register?aff=TuPe"><strong>passion8.cc</strong></a> for sponsoring this project.<br>
-  Full-power AI gateway: official models, no silent downgrades, no wrapper shells.<br>
-  One-line setup for Codex / Claude Code / Grok.
+  Thanks to <a href="https://fufuapi.xiefucai1209.com"><strong>fufuapi.xiefucai1209.com</strong></a> for sponsoring this project.<br>
+  The AI model service and the theme installer remain separate by design.
 </p>
 
 <p align="center">

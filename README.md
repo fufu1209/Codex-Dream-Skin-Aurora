@@ -5,6 +5,8 @@
 
 面向 Codex Desktop 的开源主题与换肤工具，支持 macOS 和 Windows，通过本机回环 CDP 注入可交互主题，不修改官方 `.app`、`app.asar`、WindowsApps 或代码签名。支持自定义背景图、`theme.json` 主题配置、首页 Hero、侧栏、建议卡片、编辑器与深浅色外观。
 
+项目主页：[github.com/fufu1209/Codex-Dream-Skin-Aurora](https://github.com/fufu1209/Codex-Dream-Skin-Aurora) · 赞助支持：[fufuapi.xiefucai1209.com](https://fufuapi.xiefucai1209.com)
+
 <p align="center">
   <strong>中文</strong> · <a href="./README.en.md">English</a>
 </p>
@@ -22,22 +24,22 @@
   非 OpenAI 官方产品。不修改 <code>.app</code> / <code>app.asar</code> / WindowsApps。
 </p>
 
-## 赞助商
+## 赞助与支持
 
 <p align="center">
-  <a href="https://passion8.cc/register?aff=TuPe">
-    <img src="docs/images/sponsor-passion8.png" alt="Passion8" height="72">
+  <a href="https://fufuapi.xiefucai1209.com">
+    <strong>Fufu API · AI 创作基础设施</strong>
   </a>
 </p>
 
 <p align="center">
-  <strong>更智能的连接 · 更热爱的创造</strong><br>
-  <sub>热爱驱动 · 无限可能 · Connect AI · Power Creation</sub>
+  <strong>更稳定的模型连接 · 更自由的创作体验</strong><br>
+  <sub>Fufu API · Connect AI · Power Creation</sub>
 </p>
 
 <p align="center">
-  感谢 <a href="https://passion8.cc/register?aff=TuPe"><strong>passion8.cc</strong></a> 赞助本项目。<br>
-  满血 AI 中转：官方模型直连，无降智、无套壳；一行配置接入 Codex / Claude Code / Grok。
+  感谢 <a href="https://fufuapi.xiefucai1209.com"><strong>fufuapi.xiefucai1209.com</strong></a> 赞助本项目。<br>
+  AI 模型连接服务与换肤工具彼此独立，按需使用，不影响主题安装与恢复。
 </p>
 
 <p align="center">

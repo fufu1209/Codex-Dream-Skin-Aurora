@@ -16,7 +16,7 @@ Codex 也能「换皮肤」了。
 开源地址：  
 https://github.com/Fei-Away/Codex-Dream-Skin
 
-感谢 Passion8 赞助：https://passion8.cc/register?aff=TuPe
+感谢 Fufu API 赞助：https://fufuapi.xiefucai1209.com
 
 ---
 
@@ -40,8 +40,8 @@ https://github.com/Fei-Away/Codex-Dream-Skin
 开源仓库（含效果图与安装脚本）：  
 https://github.com/Fei-Away/Codex-Dream-Skin
 
-想稳定接模型的话，可以走赞助方 Passion8（与换肤分开配置）：  
-https://passion8.cc/register?aff=TuPe
+想了解模型连接服务，可以访问赞助方 Fufu API（与换肤分开配置）：
+https://fufuapi.xiefucai1209.com
 
 ---
 

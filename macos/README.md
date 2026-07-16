@@ -97,16 +97,16 @@ MIT — see `LICENSE`. Additional notices in `NOTICE.md` (trademarks, demo asset
 
 ## Sponsors
 
-Thanks to **[passion8.cc](https://passion8.cc/register?aff=TuPe)** for sponsoring this project.
+Thanks to **[fufuapi.xiefucai1209.com](https://fufuapi.xiefucai1209.com)** for sponsoring this project.
 
 <p align="center">
-  <a href="https://passion8.cc/register?aff=TuPe">
-    <img src="../docs/images/sponsor-passion8.png" alt="Passion8" height="96">
+  <a href="https://fufuapi.xiefucai1209.com">
+    <strong>Fufu API · AI Creative Infrastructure</strong>
   </a>
 </p>
 
 <p align="center">
-  <a href="https://passion8.cc/register?aff=TuPe"><strong>Passion8｜感谢 passion8.cc 赞助本项目</strong></a><br>
+  <a href="https://fufuapi.xiefucai1209.com"><strong>Fufu API｜感谢赞助本项目</strong></a><br>
   AI API 中转站，支持 Codex / Claude Code / Grok 等工具接入。主题与 API 配置互相独立。
 </p>
 
